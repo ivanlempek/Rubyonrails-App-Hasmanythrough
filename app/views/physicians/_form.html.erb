@@ -1,0 +1,39 @@
+<%= form_with(model: physician) do |f| %>
+  <% if physician.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(physician.errors.count, "error") %> prohibited this physician from being saved:</h2>
+
+      <ul>
+        <% physician.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <br>
+
+    <%= link_to_add_association 'Add Consulta', f, :appointments, 
+    'data-association-insertion-node' => "#appointments-patient ol",
+    'data-association-insertion-method' => "append",
+    :wrap_object => Proc.new {|appointment| appointment.build_patient; appointment} %>
+    <hr/>
+
+    <fieldset id="appointments-patient">
+      <ol>
+        <%= f.fields_for :appointments do |appointment| %>
+          <%= render partial: "appointment_fields", locals: { f: appointment } %>
+        <% end %>  
+      </ol>
+    <fieldset/>
+
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
