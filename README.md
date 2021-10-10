@@ -1,24 +1,13 @@
-# README
+Comandos para o teste pleno da aplicação:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- bundle install
+- rake db:migrate
+- rails webpacker:install
 
-Things you may want to cover:
 
-* Ruby version
+- Principais caminhos da aplicação: 
+- http://localhost:3000/physicians
+- http://localhost:3000/appointments
+- http://localhost:3000/patients
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+*....
